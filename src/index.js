@@ -49,26 +49,26 @@ const gameController = (() => {
     return { Player1, Player2 };
   };
 
-  const { Player1, Player2 } = setPlayers("player1", "player2");
+  const { Player1, Player2 } = setPlayers("Player X", "Player O");
   let currentPlayer = Player1;
   let gameOver = false;
 
-  const playerDiv = document.querySelector(".current-player");
+  const gameStatus = document.querySelector(".game-status");
 
   const setCurrentPlayer = () => {
     currentPlayer = currentPlayer == Player1 ? Player2 : Player1;
-    playerDiv.textContent = currentPlayer.name;
+    gameStatus.textContent = `It's ${currentPlayer.name}'s turn...`;
   };
 
   const handleTurn = () => {
     if (checkWin()) {
       gameBoard.renderDisplay();
       gameOver = true;
-      console.log(`its a win for ${currentPlayer.name}!`);
+      gameStatus.textContent = `It's a win for ${currentPlayer.name}!`;
     } else if (checkTie()) {
       gameBoard.renderDisplay();
       gameOver = true;
-      console.log("its a tie!");
+      gameStatus.textContent = "It's a tie!";
     } else {
       setCurrentPlayer();
       gameBoard.renderDisplay();
