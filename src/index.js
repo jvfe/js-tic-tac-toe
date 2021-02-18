@@ -22,7 +22,11 @@ const gameBoard = (() => {
     });
   };
 
-  return { getBoard, setCell, renderDisplay };
+  const resetBoard = () => {
+    boardArray = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+  };
+
+  return { getBoard, setCell, resetBoard, renderDisplay };
 })();
 
 const Player = (name, symbol) => {
@@ -96,11 +100,17 @@ const gameController = (() => {
     return gameBoard.getBoard().every((cell) => cell !== " ");
   };
 
+  const resetGame = () => {
+    gameBoard.resetBoard();
+    gameOver = false;
+    startGame();
+  };
+
   const startGame = () => {
     handleTurn();
-    if (gameOver === false) {
-      const cells = document.querySelectorAll(".cell");
+    const cells = document.querySelectorAll(".cell");
 
+    if (gameOver === false) {
       cells.forEach((cell) => {
         cell.addEventListener("click", () => {
           if (cell.textContent === " ") {
@@ -111,6 +121,10 @@ const gameController = (() => {
         });
       });
     }
+
+    const restartButton = document.querySelector(".restart-button");
+
+    restartButton.addEventListener("click", resetGame);
   };
 
   return { startGame };
