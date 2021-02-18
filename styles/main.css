@@ -1,3 +1,11 @@
+:root {
+  --nice-green: #c5d7bd;
+  --light-blue: #9fb8ad;
+  --dark-blue: #383e56;
+  --nice-orange: #fb743e;
+  --darker-orange: #bf4e30;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,10 +21,73 @@ html {
 body {
   width: 100%;
   height: 100%;
+  font-family: "Oswald", sans-serif;
+}
+
+header {
+  background: var(--light-blue);
+  border-bottom: 3px solid var(--dark-blue);
+  padding: 2ch 0;
+  text-align: center;
+  font-size: 1.7em;
+}
+
+.title {
+  font-family: "Patua One", sans-serif;
+  color: var(--dark-blue);
+  text-shadow: 3px 3px var(--nice-orange);
+}
+
+.container {
+  background: #e5eafa;
+  color: var(--darker-orange);
+  padding: 2rem 0;
+  display: grid;
+  place-items: center;
+  gap: 1em 0;
 }
 
 .board-display {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0;
+  width: 30rem;
+  height: 30rem;
+  border: 2px solid var(--dark-blue);
+  border-radius: 5px;
+}
+
+.cell {
+  background: var(--nice-green);
+  color: var(--nice-orange);
+  border: 1px solid var(--dark-blue);
+  height: 159px;
+  font-family: "Patua One", sans-serif;
+  font-size: 10ch;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background: var(--light-blue);
+}
+
+.restart-button {
+  font-size: 2em;
+  padding: 0.5ch 1ch;
+  line-height: 1em;
+  letter-spacing: 0.1em;
+  background: var(--dark-blue);
+  color: var(--nice-orange);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.restart-button:hover {
+  color: var(--darker-orange);
+}
+
+.restart-button:active {
+  font-size: 1.9em;
 }
